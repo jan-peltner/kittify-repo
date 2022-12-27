@@ -11,30 +11,48 @@ import Store from "./pages/Store"
 import About from "./pages/About"
 
 export default function App() {
-  const [fullPic, setFullPic] = useState("")
-  const [displayCart, setDisplayCart] = useState(false)
+    const [fullPic, setFullPic] = useState("")
+    const [displayCart, setDisplayCart] = useState(false)
+    const [animationTrig, setAnimationTrig] = useState(false)
 
-  function getItem(obj: itemData): void {
-    const { imgUrl } = obj
-    setFullPic(imgUrl)
-  }
-  return (
-    <div className="bg-bgcol min-h-screen font-serif overflow-hidden">
-      {fullPic && (
-        <div>
-          <FullscreenPic imgUrl={fullPic} setFullPic={setFullPic} />
+    function triggerCartAnimation(): void {
+        setAnimationTrig(true)
+    }
+
+    function getItem(obj: itemData): void {
+        const { imgUrl } = obj
+        setFullPic(imgUrl)
+    }
+    return (
+        <div className="bg-bgcol h-screen font-serif overflow-hidden">
+            {fullPic && (
+                <div>
+                    <FullscreenPic imgUrl={fullPic} setFullPic={setFullPic} />
+                </div>
+            )}
+
+            <Nav
+                displayCart={displayCart}
+                setDisplayCart={setDisplayCart}
+                triggerCartAnimation={triggerCartAnimation}
+            />
+            {displayCart && (
+                <Cart
+                    setDisplayCart={setDisplayCart}
+                    animationTrig={animationTrig}
+                    setAnimationTrig={setAnimationTrig}
+                />
+            )}
+            <div className="relative">
+                <Routes>
+                    <Route path="/" element={<Home />}></Route>
+                    <Route
+                        path="/store"
+                        element={<Store getItem={getItem} />}
+                    ></Route>
+                    <Route path="/about" element={<About />}></Route>
+                </Routes>
+            </div>
         </div>
-      )}
-
-      <Nav setDisplayCart={setDisplayCart} />
-      {displayCart && <Cart />}
-      <div className="relative">
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/store" element={<Store getItem={getItem} />}></Route>
-          <Route path="/about" element={<About />}></Route>
-        </Routes>
-      </div>
-    </div>
-  )
+    )
 }
