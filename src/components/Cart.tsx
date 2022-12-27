@@ -60,9 +60,11 @@ export default function Cart({
                 ref={cartRef}
                 onClick={(e) => e.stopPropagation()}
             >
-                <h2 className="p-5 font-cursive font-bold text-stroke text-3xl ">
-                    Checkout.
-                </h2>
+                <div className="w-full flex justify-center mb-3 border-b-2 border-b-stroke">
+                    <h2 className="px-5 pt-5 pb-1 font-cursive font-bold text-stroke text-3xl ">
+                        Checkout.
+                    </h2>
+                </div>
                 <div className="grid grid-cols-2 gap-5">
                     <CartItem />
                     <CartItem />
