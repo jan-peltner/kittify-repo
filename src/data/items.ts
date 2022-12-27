@@ -42,13 +42,6 @@ const data: itemData[] = [
         artist: "ractapopulous",
         price: 9.99,
     },
-    {
-        _id: 6,
-        name: "Glowing Cat",
-        imgUrl: "/6_glowing_cat.jpg",
-        artist: "",
-        price: 14.99,
-    },
 ]
 
 export { data }
