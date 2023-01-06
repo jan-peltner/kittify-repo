@@ -1,16 +1,33 @@
 import ItemCard from "../components/ItemCard"
 
-import { data, itemData } from "../data/items"
+import { data } from "../data/items"
 
-export default function Store(props: { getItem: ({}: itemData) => void }) {
+import { IcartItem, IitemData } from "../App"
+
+interface Props {
+    cartItems: IcartItem[]
+    getItem: ({}: IitemData) => void
+    addItem: ({}: IitemData) => void
+    incQnt: ({}: IitemData) => void
+    decQnt: ({}: IitemData) => void
+}
+
+export default function Store(props: Props) {
+    const { cartItems, getItem, addItem, incQnt, decQnt } = props
     const itemArr = data.map((item) => (
         <ItemCard
             key={item._id}
-            name={item.name}
-            imgUrl={item.imgUrl}
-            artist={item.artist}
-            price={item.price}
-            getItem={props.getItem}
+            itemData={{
+                name: item.name,
+                imgUrl: item.imgUrl,
+                artist: item.artist,
+                price: item.price,
+            }}
+            cartItems={cartItems}
+            getItem={getItem}
+            addItem={addItem}
+            incQnt={incQnt}
+            decQnt={decQnt}
         />
     ))
 

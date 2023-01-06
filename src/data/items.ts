@@ -1,46 +1,47 @@
-export type itemData = {
-    _id?: number
-    name: string
-    imgUrl: string
-    artist: string
-    price: number
-}
+import { IitemData } from "../App"
 
-const data: itemData[] = [
+const data: IitemData[] = [
     {
         _id: 1,
-        name: "Girl and Cat",
-        imgUrl: "/1_girl_and_cat.jpg",
+        name: "Champagne Pink",
+        imgUrl: "/1_sphynx.jpg",
         artist: "freeillustrated",
-        price: 14.99,
+        price: 19.99,
     },
     {
         _id: 2,
-        name: "White Kitty",
-        imgUrl: "/2_white_kitty.jpg",
+        name: "Silver Pink",
+        imgUrl: "/2_sphynx.png",
         artist: "JenDigitalArt",
         price: 19.99,
     },
     {
         _id: 3,
-        name: "Cat and Mouse",
-        imgUrl: "/3_cat_and_mouse.jpg",
+        name: "Lilac Luster",
+        imgUrl: "/3_sphynx.png",
         artist: "JenDigitalArt",
         price: 19.99,
     },
     {
         _id: 4,
-        name: "Sphynx",
-        imgUrl: "/4_sphynx.jpg",
+        name: "Mountbatten Pink",
+        imgUrl: "/4_sphynx.png",
         artist: "vectronom",
-        price: 24.99,
+        price: 19.99,
     },
     {
         _id: 5,
-        name: "Cat and Dog Cuddling",
-        imgUrl: "/5_cat_and_dog_cuddling.jpg",
+        name: "Black Coral",
+        imgUrl: "/5_sphynx.png",
         artist: "ractapopulous",
-        price: 9.99,
+        price: 19.99,
+    },
+    {
+        _id: 6,
+        name: "Charcoal",
+        imgUrl: "/6_sphynx.png",
+        artist: "",
+        price: 19.99,
     },
 ]
 

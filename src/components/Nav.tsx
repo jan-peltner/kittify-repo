@@ -1,16 +1,17 @@
 import { NavLink } from "react-router-dom"
-import { MdShoppingCart } from "react-icons/md"
 import React, { Dispatch } from "react"
 
-export default function Nav({
-    displayCart,
-    setDisplayCart,
-    triggerCartAnimation,
-}: {
+import { MdShoppingCart } from "react-icons/md"
+
+type Props = {
     displayCart: boolean
     setDisplayCart: Dispatch<React.SetStateAction<boolean>>
     triggerCartAnimation: () => void
-}) {
+}
+
+export default function Nav(props: Props) {
+    const { displayCart, setDisplayCart, triggerCartAnimation } = props
+
     function handleClick(): void {
         if (!displayCart) {
             setDisplayCart(true)
@@ -18,9 +19,8 @@ export default function Nav({
             triggerCartAnimation()
         }
     }
-
     return (
-        <nav className="flex justify-between items-center shadow-stroke p-5 shadow-md">
+        <nav className="flex justify-between items-center bg-stroke border-b-btncol border-b-[1px] p-5">
             <ul
                 id="nav-left"
                 className="flex gap-3 first-line:font-bold text-lg text-hcol sm:gap-7"
