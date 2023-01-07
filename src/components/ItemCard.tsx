@@ -21,7 +21,9 @@ export default function ItemCard(props: Props) {
     const { cartItems, getItem, addItem, incQnt, decQnt } = props
     const [isHovered, setIsHovered] = useState(false)
 
-    const quantClass = !isInCart(cartItems, name) ? "hover:scale-110" : "w-36"
+    const quantClass = !isInCart(cartItems, name)
+        ? "hover:scale-110 w-12"
+        : "w-36"
     const plusTooltip = !isInCart(cartItems, name)
         ? "Add to Cart"
         : "Increase Quantity"
@@ -82,7 +84,7 @@ export default function ItemCard(props: Props) {
                     />
 
                     <div
-                        className={`${quantClass} select-none flex justify-around items-center w-12 h-12 bg-hcol drop-shadow-sm cursor-pointer absolute bottom-5 right-5 rounded-xl transition-all origin-right duration-300 ease-out`}
+                        className={`${quantClass} select-none flex justify-around items-center h-12 bg-hcol drop-shadow-sm cursor-pointer absolute bottom-5 right-5 rounded-xl transition-all origin-right duration-300 ease-out`}
                     >
                         {isInCart(cartItems, name) && (
                             <Tooltip
