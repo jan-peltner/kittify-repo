@@ -34,7 +34,7 @@ export default function CartItem(props: Props) {
                     }}
                     src={imgUrl}
                     alt=""
-                    className="object-cover border-stroke border-2 rounded-md"
+                    className="object-cover border-stroke rounded-lg"
                     id="close"
                 />
             </div>

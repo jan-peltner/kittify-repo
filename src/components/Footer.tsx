@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import Tooltip from "@mui/material/Tooltip"
 
 import { AiFillTwitterCircle } from "react-icons/ai"
 import { BsFacebook } from "react-icons/bs"
@@ -33,24 +34,32 @@ export default function Footer() {
             </ul>
             <ul className="flex gap-5 text-lg">
                 <li>
-                    <a href="#">
-                        <AiFillTwitterCircle className="fill-hcol scale-[1.143] hover:fill-grayhover transition-all ease-in-out" />
-                    </a>
+                    <Tooltip title="Twitter" arrow>
+                        <a href="#">
+                            <AiFillTwitterCircle className="fill-hcol scale-[1.143] hover:fill-grayhover transition-all ease-in-out" />
+                        </a>
+                    </Tooltip>
                 </li>
                 <li>
-                    <a href="#">
-                        <BsFacebook className="fill-hcol hover:fill-grayhover transition-all ease-in-out" />
-                    </a>
+                    <Tooltip title="Facebook" arrow>
+                        <a href="#">
+                            <BsFacebook className="fill-hcol hover:fill-grayhover transition-all ease-in-out" />
+                        </a>
+                    </Tooltip>
                 </li>
                 <li>
-                    <a href="#">
-                        <AiFillYoutube className="fill-hcol scale-x-[1.143] scale-y-[1.63] hover:fill-grayhover transition-all ease-in-out" />
-                    </a>
+                    <Tooltip title="YouTube" arrow>
+                        <a href="#">
+                            <AiFillYoutube className="fill-hcol scale-x-[1.143] scale-y-[1.63] hover:fill-grayhover transition-all ease-in-out" />
+                        </a>
+                    </Tooltip>
                 </li>
                 <li>
-                    <a href="#">
-                        <AiFillInstagram className="fill-hcol scale-[1.281] hover:fill-grayhover transition-all ease-in-out" />
-                    </a>
+                    <Tooltip title="Instagram" arrow>
+                        <a href="#">
+                            <AiFillInstagram className="fill-hcol scale-[1.281] hover:fill-grayhover transition-all ease-in-out" />
+                        </a>
+                    </Tooltip>
                 </li>
             </ul>
             <p className="inline-flex gap-2 items-center text-hcol text-sm tracking-wide">

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
 import React, { Dispatch } from "react"
+import Tooltip from "@mui/material/Tooltip"
 
 import { MdShoppingCart } from "react-icons/md"
 
@@ -78,12 +79,14 @@ export default function Nav(props: Props) {
                     </div>
                 </NavLink>
             </div>
-            <button>
-                <MdShoppingCart
-                    onClick={handleClick}
-                    className="scale-150 text-btncol"
-                />
-            </button>
+            <Tooltip title="Open Shopping Cart" placement="left" arrow>
+                <button>
+                    <MdShoppingCart
+                        onClick={handleClick}
+                        className="scale-150 text-btncol"
+                    />
+                </button>
+            </Tooltip>
         </nav>
     )
 }

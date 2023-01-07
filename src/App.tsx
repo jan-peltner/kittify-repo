@@ -119,6 +119,7 @@ export default function App() {
                     animationTrig={animationTrig}
                     setAnimationTrig={setAnimationTrig}
                     cartItems={cartItems}
+                    setCartItems={setCartItems}
                     removeItem={removeItem}
                     getItem={getItem}
                 />
