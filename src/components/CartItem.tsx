@@ -26,7 +26,7 @@ export default function CartItem(props: Props) {
         getQnt(cartItems, name) > 1 ? "Decrease Quantity" : "Remove Item"
 
     const borderClass = isLastInCart(name, cartItems)
-        ? "border-double border-b-[3px] border-opacity-100"
+        ? undefined
         : "border-dotted border-b-[1px]"
 
     function isLastInCart(name: string, cartItems: IcartItem[]): boolean {
@@ -42,7 +42,7 @@ export default function CartItem(props: Props) {
 
     return (
         <div
-            className={`${borderClass} flex justify-center w-3/4 pb-3 gap-10 border-b-stroke border-opacity-50`}
+            className={`${borderClass} flex justify-center w-3/4 pb-3 gap-10 border-b-hcol border-opacity-50`}
         >
             <div className="w-2/5">
                 <img
@@ -51,12 +51,12 @@ export default function CartItem(props: Props) {
                     }}
                     src={imgUrl}
                     alt=""
-                    className="object-cover border-stroke rounded-lg"
+                    className="object-cover rounded-lg"
                     id="close"
                 />
             </div>
             <div className="flex flex-col justify-between items-start gap-1 pb-3">
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 text-hcol">
                     <div>{name}</div>
                     <div className="font-bold">{price}$</div>
                 </div>

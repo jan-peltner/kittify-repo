@@ -15,7 +15,6 @@ type Props = {
     setAnimationTrig: Dispatch<React.SetStateAction<boolean>>
     cartItems: IcartItem[]
     setCartItems: Dispatch<React.SetStateAction<IcartItem[]>>
-    removeItem: (itemData: IitemData) => void
     getItem: ({}: IitemData) => void
     getQnt: (cartItems: IcartItem[], name: string) => number
     incQnt: ({}: IitemData) => void
@@ -29,7 +28,6 @@ export default function Cart(props: Props) {
         setAnimationTrig,
         cartItems,
         setCartItems,
-        removeItem,
         getItem,
         getQnt,
         incQnt,
@@ -109,12 +107,12 @@ export default function Cart(props: Props) {
             ref={overlayRef}
         >
             <div
-                className="flex flex-col justify-center items-center bg-pcol w-1/3 rounded-l-md  absolute right-0 z-20"
+                className="flex flex-col justify-center items-center bg-bgcol w-1/3 rounded-l-md  absolute right-0 z-20"
                 ref={cartRef}
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="w-full flex justify-center mb-3 border-b-2 border-b-stroke">
-                    <h2 className="px-5 pt-5 pb-1 font-cursive font-bold text-stroke text-3xl ">
+                <div className="w-full flex justify-center mb-3 border-b-[1px] border-b-btncol">
+                    <h2 className="bg-stroke w-full text-center px-5 pt-5 pb-1 font-cursive font-bold text-hcol text-3xl ">
                         Checkout.
                     </h2>
                 </div>
@@ -123,30 +121,32 @@ export default function Cart(props: Props) {
                         <div className="flex flex-col items-center gap-6">
                             {cartItemArr}
                         </div>
-                        <div className="pt-6 pb-3 font-bold">
-                            Total Cost: {calcTotal(cartItems)}$
-                        </div>
-                        <div className="w-full flex justify-around items-center">
-                            <button className="bg-btncol w-1/3 hover:bg-pinkhover text-bgcol rounded-md my-3 p-3 font-bold transition-colors duration-200 ease-in-out">
-                                Buy meow
-                            </button>
-                            <Tooltip
-                                title="Remove all Items from Cart"
-                                placement="top"
-                                arrow
-                            >
-                                <div>
-                                    <BsCartX
-                                        onClick={() => setCartItems([])}
-                                        className="fill-[#de1738] scale-150 cursor-pointer"
-                                    ></BsCartX>
-                                </div>
-                            </Tooltip>
+                        <div className="w-full bg-stroke border-t-[2px] border-t-btncol">
+                            <div className="pt-6 pb-3 font-bold text-hcol text-center">
+                                Total Cost: {calcTotal(cartItems)}$
+                            </div>
+                            <div className="w-full flex justify-around items-center">
+                                <button className="bg-btncol w-1/3 hover:bg-pinkhover text-bgcol rounded-md my-3 p-3 font-bold transition-colors duration-200 ease-in-out">
+                                    Buy meow
+                                </button>
+                                <Tooltip
+                                    title="Remove all Items from Cart"
+                                    placement="top"
+                                    arrow
+                                >
+                                    <div>
+                                        <BsCartX
+                                            onClick={() => setCartItems([])}
+                                            className="fill-[#de1738] scale-150 cursor-pointer"
+                                        ></BsCartX>
+                                    </div>
+                                </Tooltip>
+                            </div>
                         </div>
                     </div>
                 ) : (
                     <div className="w-full flex flex-col items-center justify-between">
-                        <div className="pt-5 font-bold">
+                        <div className="pt-5 font-bold text-hcol">
                             No items in cart. 😿
                         </div>
                         <svg
@@ -227,7 +227,7 @@ export default function Cart(props: Props) {
                         </svg>
                         <button
                             onClick={handleClose}
-                            className="bg-btncol w-1/2 hover:bg-pinkhover text-bgcol rounded-lg my-3 p-3 font-bold transition-colors duration-200 ease-in-out"
+                            className="bg-btncol w-1/2 hover:bg-pinkhover text-stroke rounded-lg my-3 p-3 font-bold transition-colors duration-200 ease-in-out"
                         >
                             <NavLink to="/store">Go to Store</NavLink>
                         </button>

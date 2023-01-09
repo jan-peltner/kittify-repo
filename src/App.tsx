@@ -130,7 +130,6 @@ export default function App() {
                     setAnimationTrig={setAnimationTrig}
                     cartItems={cartItems}
                     setCartItems={setCartItems}
-                    removeItem={removeItem}
                     getItem={getItem}
                     getQnt={getQnt}
                     incQnt={incQnt}
