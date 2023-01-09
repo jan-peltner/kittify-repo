@@ -17,6 +17,9 @@ type Props = {
     setCartItems: Dispatch<React.SetStateAction<IcartItem[]>>
     removeItem: (itemData: IitemData) => void
     getItem: ({}: IitemData) => void
+    getQnt: (cartItems: IcartItem[], name: string) => number
+    incQnt: ({}: IitemData) => void
+    decQnt: ({}: IitemData) => void
 }
 
 export default function Cart(props: Props) {
@@ -28,10 +31,14 @@ export default function Cart(props: Props) {
         setCartItems,
         removeItem,
         getItem,
+        getQnt,
+        incQnt,
+        decQnt,
     } = props
+
     const overlayRef = useRef(null)
     const cartRef = useRef(null)
-    console.log(props)
+
     const cartItemArr = cartItems.map((item) => (
         <CartItem
             key={item.itemData._id}
@@ -44,9 +51,12 @@ export default function Cart(props: Props) {
                 },
                 quantity: 1,
             }}
-            removeItem={removeItem}
+            cartItems={cartItems}
             getItem={getItem}
             setDisplayCart={setDisplayCart}
+            getQnt={getQnt}
+            incQnt={incQnt}
+            decQnt={decQnt}
         />
     ))
     function calcTotal(cartItems: IcartItem[]): string {
@@ -110,7 +120,7 @@ export default function Cart(props: Props) {
                 </div>
                 {cartItems[0] ? (
                     <div className="w-full flex flex-col items-center">
-                        <div className="grid grid-cols-2 gap-y-8 gap-x-6 px-3">
+                        <div className="flex flex-col items-center gap-6">
                             {cartItemArr}
                         </div>
                         <div className="pt-6 pb-3 font-bold">

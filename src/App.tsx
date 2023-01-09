@@ -56,6 +56,16 @@ export default function App() {
         })
     }
 
+    function getQnt(cartItems: IcartItem[], name: string): number {
+        let qnt = 0
+        cartItems.forEach((item) => {
+            if (item.itemData.name === name) {
+                qnt = item.quantity ?? 1
+            }
+        })
+        return qnt
+    }
+
     function incQnt(itemData: IitemData): void {
         const { name } = itemData
         setCartItems((prev) => {
@@ -122,6 +132,9 @@ export default function App() {
                     setCartItems={setCartItems}
                     removeItem={removeItem}
                     getItem={getItem}
+                    getQnt={getQnt}
+                    incQnt={incQnt}
+                    decQnt={decQnt}
                 />
             )}
             <div className="relative">
@@ -134,6 +147,7 @@ export default function App() {
                                 getItem={getItem}
                                 addItem={addItem}
                                 cartItems={cartItems}
+                                getQnt={getQnt}
                                 incQnt={incQnt}
                                 decQnt={decQnt}
                             />

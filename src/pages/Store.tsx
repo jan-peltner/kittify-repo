@@ -4,16 +4,17 @@ import { data } from "../data/items"
 
 import { IcartItem, IitemData } from "../App"
 
-interface Props {
+type Props = {
     cartItems: IcartItem[]
     getItem: ({}: IitemData) => void
     addItem: ({}: IitemData) => void
+    getQnt: (cartItems: IcartItem[], name: string) => number
     incQnt: ({}: IitemData) => void
     decQnt: ({}: IitemData) => void
 }
 
 export default function Store(props: Props) {
-    const { cartItems, getItem, addItem, incQnt, decQnt } = props
+    const { cartItems, getItem, addItem, getQnt, incQnt, decQnt } = props
     const itemArr = data.map((item) => (
         <ItemCard
             key={item._id}
@@ -26,6 +27,7 @@ export default function Store(props: Props) {
             cartItems={cartItems}
             getItem={getItem}
             addItem={addItem}
+            getQnt={getQnt}
             incQnt={incQnt}
             decQnt={decQnt}
         />

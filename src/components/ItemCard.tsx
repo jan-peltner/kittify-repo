@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useIsInCart } from "../hooks/useIsInCart"
 
 import Tooltip from "@mui/material/Tooltip"
 import { MdFullscreen } from "react-icons/md"
@@ -12,19 +13,20 @@ type Props = {
     itemData: IitemData
     getItem: ({}: IitemData) => void
     addItem: ({}: IitemData) => void
+    getQnt: (cartItems: IcartItem[], name: string) => number
     incQnt: ({}: IitemData) => void
     decQnt: ({}: IitemData) => void
 }
 
 export default function ItemCard(props: Props) {
     const { imgUrl, name, price } = props.itemData
-    const { cartItems, getItem, addItem, incQnt, decQnt } = props
+    const { cartItems, getItem, addItem, getQnt, incQnt, decQnt } = props
     const [isHovered, setIsHovered] = useState(false)
 
-    const quantClass = !isInCart(cartItems, name)
+    const quantClass = !useIsInCart(cartItems, name)
         ? "hover:scale-110 w-12"
         : "w-36"
-    const plusTooltip = !isInCart(cartItems, name)
+    const plusTooltip = !useIsInCart(cartItems, name)
         ? "Add to Cart"
         : "Increase Quantity"
     const minusTooltip =
@@ -36,22 +38,8 @@ export default function ItemCard(props: Props) {
 
     const hoverImgIcon = isHovered ? "opacity-100 cursor-pointer" : "opacity-0"
 
-    function isInCart(cartItems: IcartItem[], name: string): boolean {
-        return cartItems.some((item) => item.itemData.name === name)
-    }
-
-    function getQnt(cartItems: IcartItem[], name: string): number {
-        let qnt = 0
-        cartItems.forEach((item) => {
-            if (item.itemData.name === name) {
-                qnt = item.quantity ?? 1
-            }
-        })
-        return qnt
-    }
-
     function handleAdd(): void {
-        isInCart(cartItems, name)
+        useIsInCart(cartItems, name)
             ? incQnt(props.itemData)
             : addItem(props.itemData)
     }
@@ -86,7 +74,7 @@ export default function ItemCard(props: Props) {
                     <div
                         className={`${quantClass} select-none flex justify-around items-center h-12 bg-hcol drop-shadow-sm cursor-pointer absolute bottom-5 right-5 rounded-xl transition-all origin-right duration-300 ease-out`}
                     >
-                        {isInCart(cartItems, name) && (
+                        {useIsInCart(cartItems, name) && (
                             <Tooltip
                                 title={minusTooltip}
                                 placement="bottom"
@@ -113,7 +101,7 @@ export default function ItemCard(props: Props) {
                                 </div>
                             </Tooltip>
                         )}
-                        {isInCart(cartItems, name) && (
+                        {useIsInCart(cartItems, name) && (
                             <p className="font-bold text-stroke text-2xl">
                                 {getQnt(cartItems, name)}
                             </p>
@@ -139,47 +127,3 @@ export default function ItemCard(props: Props) {
         </>
     )
 }
-
-/* {!isInCart(cartItems, name) ? (
-                    <button
-                        className="flex justify-center items-center gap-3.5 w-3/4 bg-btncol hover:bg-pinkhover text-bgcol rounded-md my-3 p-3 font-bold transition-colors duration-200 ease-in-out"
-                        onClick={() => addItem({ imgUrl, name, price })}
-                    >
-                        Add to Cart
-                        <span>
-                            <RiShoppingCartLine className="scale-150" />
-                        </span>
-                    </button>
-                ) : (
-                    <div className="flex my-5 gap-3.5 items-center font-bold">
-                        <p className="font-normal">Quantity: </p>
-                        <Tooltip
-                            title="Decrease"
-                            placement="bottom"
-                            arrow={true}
-                        >
-                            <button
-                                onClick={() => {
-                                    decQnt(props.itemData)
-                                }}
-                                className="bg-btncol hover:bg-pinkhover text-bgcol rounded-lg px-2"
-                            >
-                                &#8722;
-                            </button>
-                        </Tooltip>
-                        <p>{displayQnt(cartItems, name)}</p>
-                        <Tooltip
-                            title="Increase"
-                            placement="bottom"
-                            arrow={true}
-                        >
-                            <button
-                                onClick={() => {
-                                    incQnt(props.itemData)
-                                }}
-                                className="bg-btncol hover:bg-pinkhover text-bgcol rounded-lg px-2"
-                            >
-                                &#43;
-                            </button>
-                        </Tooltip>
-                    </div> */
