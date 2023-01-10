@@ -5,15 +5,15 @@ module.exports = {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         colors: {
-            bgcol: "#232946",
-            hcol: "#fffffe",
-            pcol: "#b8c1ec",
-            btncol: "#eebbc3",
-            stroke: "#121629",
-            main: "#b8c1ec",
+            bgcol: "#071320",
+            hcol: "#EBFAF7",
+            pcol: "#14414E",
+            btncol: "#91A296",
+            stroke: "#050c15",
+            main: "#91A296",
             strokehover: "#2f396a",
             grayhover: "#cccccc",
-            pinkhover: "#e699a4",
+            pinkhover: "#ac7151",
         },
         fontFamily: {
             serif: ["Open Sans", "sans-serif"],

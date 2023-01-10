@@ -49,11 +49,11 @@ export default function FullscreenPic(props: Props) {
             ref={overlayRef}
         >
             <div
-                className="absolute image-container w-5/6 h-5/6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+                className="absolute image-container w-5/6 max-w-[1536px] aspect-[3/2] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2  z-20"
                 ref={fullscreenRef}
             >
                 <img
-                    className="object-cover w-full h-full"
+                    className=" w-full h-full"
                     src={props.imgUrl}
                     alt=""
                     onClick={(e) => e.stopPropagation()}

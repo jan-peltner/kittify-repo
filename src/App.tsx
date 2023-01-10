@@ -136,7 +136,7 @@ export default function App() {
                     decQnt={decQnt}
                 />
             )}
-            <div className="relative">
+            <div className="w-full h-full">
                 <Routes>
                     <Route path="/" element={<Home />}></Route>
                     <Route

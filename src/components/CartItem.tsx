@@ -42,7 +42,7 @@ export default function CartItem(props: Props) {
 
     return (
         <div
-            className={`${borderClass} flex justify-center w-3/4 pb-3 gap-10 border-b-hcol border-opacity-50`}
+            className={`${borderClass} flex justify-center items-center w-3/4 pb-3 gap-10 border-b-hcol border-opacity-50`}
         >
             <div className="w-2/5">
                 <img
