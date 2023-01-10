@@ -21,10 +21,10 @@ export default function Nav(props: Props) {
         }
     }
     return (
-        <nav className="flex justify-between items-center bg-stroke border-b-btncol border-b-[1px] p-5">
+        <nav className="flex justify-between items-center bg-gradient-to-b from-stroke to-bgcol p-5">
             <div
                 id="logo"
-                className="text-lg text-hcol font-cursive font-light hover:text-grayhover transition-all ease-in-out"
+                className="text-lg text-hcol font-cursive font-light  hover:text-grayhover transition-all ease-in-out"
             >
                 <NavLink to="/">
                     <div
@@ -86,7 +86,7 @@ export default function Nav(props: Props) {
                     <button>
                         <MdShoppingCart
                             onClick={handleClick}
-                            className="scale-150 text-btncol"
+                            className="scale-[2] text-btncol"
                         />
                     </button>
                 </Tooltip>

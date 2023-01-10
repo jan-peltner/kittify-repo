@@ -1,13 +1,13 @@
 export default function Home() {
     return (
         <>
-            <div className="w-full h-1/2 overflow-hidden relative">
+            <div className="w-full h-1/2 relative">
                 <img
-                    className="w-full h-full object-cover"
+                    className="w-full h-full select-none object-cover"
                     src="./hero.png"
                     alt=""
                 />
-                <h2 className="absolute text-hcol text-7xl text-opacity-90 tracking-widest bottom-0 left-0">
+                <h2 className="absolute text-hcol text-7xl text-opacity-90 tracking-widest bottom-0 left-0 select-none">
                     KITTY ART KITTY ART KITTY ART KITTY ART.
                 </h2>
             </div>

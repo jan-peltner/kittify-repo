@@ -111,8 +111,8 @@ export default function Cart(props: Props) {
                 ref={cartRef}
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="w-full flex justify-center mb-3 border-b-[1px] border-b-btncol">
-                    <h2 className="bg-stroke w-full text-center px-5 pt-5 pb-1 font-cursive font-bold text-hcol text-3xl ">
+                <div className="w-full flex justify-center mb-3">
+                    <h2 className="bg-gradient-to-b from-stroke to-bgcol w-full text-center px-5 pt-5 pb-1 font-cursive font-bold text-hcol text-3xl ">
                         Checkout.
                     </h2>
                 </div>
@@ -121,8 +121,8 @@ export default function Cart(props: Props) {
                         <div className="flex flex-col items-center gap-6">
                             {cartItemArr}
                         </div>
-                        <div className="w-full bg-stroke border-t-[2px] border-t-btncol">
-                            <div className="pt-6 pb-3 font-bold text-hcol text-center">
+                        <div className="w-full bg-gradient-to-b from-bgcol to-stroke">
+                            <div className="pt-6 pb-3 font-bold text-hcol text-center border-dotted border-t-[1px] border-hcol border-opacity-75">
                                 Total Cost: {calcTotal(cartItems)}$
                             </div>
                             <div className="w-full flex justify-around items-center">
@@ -146,9 +146,7 @@ export default function Cart(props: Props) {
                     </div>
                 ) : (
                     <div className="w-full flex flex-col items-center justify-between">
-                        <div className="pt-5 font-bold text-hcol">
-                            No items in cart. 😿
-                        </div>
+                        <div className="pt-5 font-bold text-hcol"></div>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 400 300"
