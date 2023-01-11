@@ -2,16 +2,20 @@ import { NavLink } from "react-router-dom"
 import React, { Dispatch } from "react"
 import Tooltip from "@mui/material/Tooltip"
 
-import { MdShoppingCart } from "react-icons/md"
+import { BiShoppingBag } from "react-icons/bi"
+
+import { IcartItem } from "../App"
 
 type Props = {
     displayCart: boolean
     setDisplayCart: Dispatch<React.SetStateAction<boolean>>
     triggerCartAnimation: () => void
+    cartItems: IcartItem[]
 }
 
 export default function Nav(props: Props) {
-    const { displayCart, setDisplayCart, triggerCartAnimation } = props
+    const { displayCart, setDisplayCart, triggerCartAnimation, cartItems } =
+        props
 
     function handleClick(): void {
         if (!displayCart) {
@@ -83,11 +87,16 @@ export default function Nav(props: Props) {
             </ul>
             <div className="w-52 flex justify-end">
                 <Tooltip title="Open Shopping Cart" placement="left" arrow>
-                    <button>
-                        <MdShoppingCart
+                    <button className="w-10 h-10 flex items-center justify-center relative hover:brightness-125">
+                        <BiShoppingBag
                             onClick={handleClick}
                             className="scale-[2] text-btncol"
                         />
+                        {cartItems.length > 0 && (
+                            <div className="absolute text-stroke font-bold text-sm top-0 right-0 z-10 before:absolute before:bg-btncol before:w-[20px] before:h-full before:-translate-x-[6px] before:rounded-full before:-z-10 ">
+                                {cartItems.length}
+                            </div>
+                        )}
                     </button>
                 </Tooltip>
             </div>

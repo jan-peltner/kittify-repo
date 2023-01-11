@@ -111,7 +111,7 @@ export default function App() {
     }
 
     return (
-        <div className="flex flex-col bg-bgcol h-screen font-serif overflow-hidden">
+        <div className="flex flex-col bg-bgcol h-screen font-serif overflow-x-hidden scrollbar-thin scrollbar-thumb-btncol scrollbar-thumb-rounded-full">
             {fullPic && (
                 <div>
                     <FullscreenPic imgUrl={fullPic} setFullPic={setFullPic} />
@@ -122,6 +122,7 @@ export default function App() {
                 displayCart={displayCart}
                 setDisplayCart={setDisplayCart}
                 triggerCartAnimation={triggerCartAnimation}
+                cartItems={cartItems}
             />
             {displayCart && (
                 <Cart

@@ -90,7 +90,7 @@ export default function Store(props: Props) {
                     {phrase}
                 </h1>
                 <div className="flex gap-16 h-full items-center relative">
-                    <Tooltip title="Previous Collection" arrow>
+                    <Tooltip title="Previous Collection" placement="top" arrow>
                         <div>
                             <BsArrowLeft
                                 onClick={() => handleALClick(data)}
@@ -98,7 +98,7 @@ export default function Store(props: Props) {
                             />
                         </div>
                     </Tooltip>
-                    <Tooltip title="Next Collection" arrow>
+                    <Tooltip title="Next Collection" placement="top" arrow>
                         <div>
                             <BsArrowRight
                                 onClick={() => handleARClick(data)}
