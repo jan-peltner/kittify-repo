@@ -4,6 +4,7 @@ import { data } from "../data/items"
 import { IcartItem, IitemData } from "../App"
 
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs"
+import { RxDot, RxDotFilled } from "react-icons/rx"
 import { useState } from "react"
 import Tooltip from "@mui/material/Tooltip"
 
@@ -43,6 +44,13 @@ export default function Store(props: Props) {
             decQnt={decQnt}
         />
     ))
+    const dotArr = data.map((coll, idx) => {
+        if (collection === idx) {
+            return <RxDotFilled className="text-hcol scale-[2]" />
+        } else {
+            return <RxDot className="text-hcol scale-[1.5]" />
+        }
+    })
 
     function handleARClick(data: IitemData[][]): void {
         setCollection((prev) => {
@@ -77,11 +85,11 @@ export default function Store(props: Props) {
 
     return (
         <>
-            <div className="flex justify-between items-center pr-28">
+            <div className="flex justify-between h-[100px] items-center pr-28">
                 <h1 className="text-hcol text-6xl py-5 tracking-widest pl-5">
                     {phrase}
                 </h1>
-                <div className="flex gap-14">
+                <div className="flex gap-16 h-full items-center relative">
                     <Tooltip title="Previous Collection" arrow>
                         <div>
                             <BsArrowLeft
@@ -98,6 +106,9 @@ export default function Store(props: Props) {
                             />
                         </div>
                     </Tooltip>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-1 justify-center">
+                        {dotArr}
+                    </div>
                 </div>
             </div>
             <div className="grid grid-cols-3 auto-rows-[500px] p-5 gap-x-4 gap-y-8">
@@ -106,3 +117,7 @@ export default function Store(props: Props) {
         </>
     )
 }
+
+/* <RxDot className="text-hcol scale-125" />
+                        <RxDot className="text-hcol scale-125" />
+                        <RxDotFilled className="text-hcol scale-[1.75]" /> */
