@@ -1,0 +1,5 @@
+[[headers]]
+    for = "/*.png"
+    [headers.values]
+        cache-control= "max-age=3600"
+
