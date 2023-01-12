@@ -1,0 +1,2 @@
+/*.png
+    cache-control= "max-age=3600"

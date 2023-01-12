@@ -1,11 +1,12 @@
 import ItemCard from "../components/ItemCard"
 
+import { _data } from "../data/_test"
 import { data } from "../data/items"
 import { IcartItem, IitemData } from "../App"
 
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs"
 import { RxDot, RxDotFilled } from "react-icons/rx"
-import { useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import Tooltip from "@mui/material/Tooltip"
 
@@ -54,6 +55,16 @@ export default function Store(props: Props) {
             return <RxDot className="text-hcol scale-[1.5]" />
         }
     })
+
+    useEffect(() => {
+        // load all images
+        data.forEach((arr) => {
+            arr.forEach((item) => {
+                const img = new Image()
+                img.src = item.imgUrl
+            })
+        })
+    }, [])
 
     useLayoutEffect(() => {
         if (onMount) {
