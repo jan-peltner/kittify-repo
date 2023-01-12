@@ -5,7 +5,8 @@ import { IcartItem, IitemData } from "../App"
 
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs"
 import { RxDot, RxDotFilled } from "react-icons/rx"
-import { useState } from "react"
+import { useLayoutEffect, useRef, useState } from "react"
+import { gsap } from "gsap"
 import Tooltip from "@mui/material/Tooltip"
 
 type Props = {
@@ -23,7 +24,9 @@ export default function Store(props: Props) {
         "ART THAT MAKES YOU ROAR.",
         "ART THAT MAKES YOU GROWL.",
     ]
-
+    const rootEl = useRef(null)
+    const [onMount, setOnMount] = useState(true)
+    const [fadeFrom, setFadeFrom] = useState<"l" | "r">("l") // determines from which side items should fade in
     const [phrase, setPhrase] = useState(phrases[0])
     const [collection, setCollection] = useState(0)
     const { cartItems, getItem, addItem, getQnt, incQnt, decQnt } = props
@@ -52,9 +55,45 @@ export default function Store(props: Props) {
         }
     })
 
+    useLayoutEffect(() => {
+        if (onMount) {
+            setOnMount(false)
+            return
+        }
+        const gsapObj =
+            fadeFrom === "r"
+                ? {
+                      x: 125,
+                      scale: 0.95,
+                      opacity: 0,
+                      stagger: {
+                          grid: [2, 3],
+                          each: 0.1,
+                          from: "start",
+                      },
+                      ease: "Power2.out",
+                  }
+                : {
+                      x: -125,
+                      scale: 0.95,
+                      opacity: 0,
+                      stagger: {
+                          grid: [2, 3],
+                          each: 0.1,
+                          from: "end",
+                      },
+                      ease: "Power2.out",
+                  }
+        let ctx = gsap.context(() => {
+            gsap.from(".target", gsapObj as gsap.TweenVars)
+        }, rootEl)
+        return () => ctx.revert()
+    }, [collection])
+
     function handleARClick(data: IitemData[][]): void {
+        generateRandomPhrase(phrases, phrase)
+        setFadeFrom("l")
         setCollection((prev) => {
-            generateRandomPhrase(phrases, phrase)
             if (prev === data.length - 1) {
                 return 0
             } else {
@@ -65,6 +104,7 @@ export default function Store(props: Props) {
 
     function handleALClick(data: IitemData[][]): void {
         generateRandomPhrase(phrases, phrase)
+        setFadeFrom("r")
         setCollection((prev) => {
             if (prev === 0) {
                 return data.length - 1
@@ -111,13 +151,12 @@ export default function Store(props: Props) {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-3 auto-rows-[500px] p-5 gap-x-4 gap-y-8">
+            <div
+                ref={rootEl}
+                className="grid grid-cols-3 auto-rows-[500px] p-5 gap-x-4 gap-y-8"
+            >
                 {itemArr}
             </div>
         </>
     )
 }
-
-/* <RxDot className="text-hcol scale-125" />
-                        <RxDot className="text-hcol scale-125" />
-                        <RxDotFilled className="text-hcol scale-[1.75]" /> */

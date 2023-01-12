@@ -90,10 +90,10 @@ export default function Nav(props: Props) {
                     <button className="w-10 h-10 flex items-center justify-center relative hover:brightness-125">
                         <BiShoppingBag
                             onClick={handleClick}
-                            className="scale-[2] text-btncol"
+                            className="scale-[2] text-hcol"
                         />
                         {cartItems.length > 0 && (
-                            <div className="absolute text-stroke font-bold text-sm top-0 right-0 z-10 before:absolute before:bg-btncol before:w-[20px] before:h-full before:-translate-x-[6px] before:rounded-full before:-z-10 ">
+                            <div className="absolute text-stroke font-bold text-sm top-0 right-0 z-10 before:absolute before:bg-pinkhover before:w-[20px] before:h-full before:-translate-x-[6px] before:rounded-full before:-z-10">
                                 {cartItems.length}
                             </div>
                         )}

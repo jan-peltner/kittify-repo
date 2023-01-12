@@ -19,6 +19,7 @@ type Props = {
     getQnt: (cartItems: IcartItem[], name: string) => number
     incQnt: ({}: IitemData) => void
     decQnt: ({}: IitemData) => void
+    collection: number
 }
 
 export default function Cart(props: Props) {
@@ -57,6 +58,7 @@ export default function Cart(props: Props) {
             decQnt={decQnt}
         />
     ))
+
     function calcTotal(cartItems: IcartItem[]): string {
         let total = 0
         cartItems.forEach((item) => {
