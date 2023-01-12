@@ -19,7 +19,6 @@ type Props = {
     getQnt: (cartItems: IcartItem[], name: string) => number
     incQnt: ({}: IitemData) => void
     decQnt: ({}: IitemData) => void
-    collection: number
 }
 
 export default function Cart(props: Props) {
