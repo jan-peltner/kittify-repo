@@ -56,16 +56,6 @@ export default function Store(props: Props) {
         }
     })
 
-    useEffect(() => {
-        // load all images
-        data.forEach((arr) => {
-            arr.forEach((item) => {
-                const img = new Image()
-                img.src = item.imgUrl
-            })
-        })
-    }, [])
-
     useLayoutEffect(() => {
         if (onMount) {
             setOnMount(false)

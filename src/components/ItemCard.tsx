@@ -45,6 +45,9 @@ export default function ItemCard(props: Props) {
             : addItem(props.itemData)
     }
 
+    const img = new Image()
+    img.src = imgUrl
+
     return (
         <>
             <div className="target item-container flex flex-col justify-between items-center">
