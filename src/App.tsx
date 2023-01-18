@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom"
 import { useState } from "react"
 
+import { data } from "./data/items"
+
+import LandingPage from "./components/LandingPage"
 import Nav from "./components/Nav"
 import Cart from "./components/Cart"
 import Footer from "./components/Footer"
@@ -22,11 +25,25 @@ export interface IcartItem {
     quantity?: number
 }
 
+// a cache for all images in the data array in order to avoid unnecessary GET requests
+function getImages() {
+    const imgArr: JSX.Element[] = []
+    data.forEach((collection) =>
+        collection.forEach((item) => {
+            imgArr.push(<img key={item.name} src={item.imgUrl}></img>)
+        })
+    )
+    return imgArr
+}
+
+const imgCache = getImages()
+
 export default function App() {
     const [fullPic, setFullPic] = useState(""),
         [displayCart, setDisplayCart] = useState(false),
         [animationTrig, setAnimationTrig] = useState(false),
-        [cartItems, setCartItems] = useState<IcartItem[]>([])
+        [cartItems, setCartItems] = useState<IcartItem[]>([]),
+        [access, setAccess] = useState(false)
 
     function triggerCartAnimation(): void {
         setAnimationTrig(true)
@@ -111,52 +128,64 @@ export default function App() {
     }
 
     return (
-        <div className="flex flex-col bg-bgcol h-screen font-serif overflow-x-hidden scrollbar-thin scrollbar-thumb-btncol scrollbar-thumb-rounded-full">
-            {fullPic && (
-                <div>
-                    <FullscreenPic imgUrl={fullPic} setFullPic={setFullPic} />
-                </div>
-            )}
+        <>
+            {/* img cache */}
+            <div className="hidden">{imgCache}</div>
 
-            <Nav
-                displayCart={displayCart}
-                setDisplayCart={setDisplayCart}
-                triggerCartAnimation={triggerCartAnimation}
-                cartItems={cartItems}
-            />
-            {displayCart && (
-                <Cart
-                    setDisplayCart={setDisplayCart}
-                    animationTrig={animationTrig}
-                    setAnimationTrig={setAnimationTrig}
-                    cartItems={cartItems}
-                    setCartItems={setCartItems}
-                    getItem={getItem}
-                    getQnt={getQnt}
-                    incQnt={incQnt}
-                    decQnt={decQnt}
-                />
-            )}
-            <div className="w-full h-full">
-                <Routes>
-                    <Route path="/" element={<Home />}></Route>
-                    <Route
-                        path="/store"
-                        element={
-                            <Store
-                                getItem={getItem}
-                                addItem={addItem}
-                                cartItems={cartItems}
-                                getQnt={getQnt}
-                                incQnt={incQnt}
-                                decQnt={decQnt}
+            {access ? (
+                <div className="flex flex-col bg-bgcol h-screen font-serif overflow-x-hidden scrollbar-thin scrollbar-thumb-btncol scrollbar-thumb-rounded-full">
+                    {fullPic && (
+                        <div>
+                            <FullscreenPic
+                                imgUrl={fullPic}
+                                setFullPic={setFullPic}
                             />
-                        }
-                    ></Route>
-                    <Route path="/about" element={<About />}></Route>
-                </Routes>
-            </div>
-            <Footer />
-        </div>
+                        </div>
+                    )}
+
+                    <Nav
+                        displayCart={displayCart}
+                        setDisplayCart={setDisplayCart}
+                        triggerCartAnimation={triggerCartAnimation}
+                        cartItems={cartItems}
+                    />
+                    {displayCart && (
+                        <Cart
+                            setDisplayCart={setDisplayCart}
+                            animationTrig={animationTrig}
+                            setAnimationTrig={setAnimationTrig}
+                            cartItems={cartItems}
+                            setCartItems={setCartItems}
+                            getItem={getItem}
+                            getQnt={getQnt}
+                            incQnt={incQnt}
+                            decQnt={decQnt}
+                        />
+                    )}
+                    <div className="w-full h-full">
+                        <Routes>
+                            <Route path="/" element={<Home />}></Route>
+                            <Route
+                                path="/store"
+                                element={
+                                    <Store
+                                        getItem={getItem}
+                                        addItem={addItem}
+                                        cartItems={cartItems}
+                                        getQnt={getQnt}
+                                        incQnt={incQnt}
+                                        decQnt={decQnt}
+                                    />
+                                }
+                            ></Route>
+                            <Route path="/about" element={<About />}></Route>
+                        </Routes>
+                    </div>
+                    <Footer />
+                </div>
+            ) : (
+                <LandingPage setAccess={setAccess} />
+            )}
+        </>
     )
 }

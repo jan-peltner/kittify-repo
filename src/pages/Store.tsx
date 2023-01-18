@@ -1,12 +1,11 @@
 import ItemCard from "../components/ItemCard"
 
-import { _data } from "../data/_test"
 import { data } from "../data/items"
 import { IcartItem, IitemData } from "../App"
 
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs"
 import { RxDot, RxDotFilled } from "react-icons/rx"
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useLayoutEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import Tooltip from "@mui/material/Tooltip"
 
@@ -50,9 +49,9 @@ export default function Store(props: Props) {
     ))
     const dotArr = data.map((coll, idx) => {
         if (collection === idx) {
-            return <RxDotFilled className="text-hcol scale-[2]" />
+            return <RxDotFilled key={idx} className="text-hcol scale-[2]" />
         } else {
-            return <RxDot className="text-hcol scale-[1.5]" />
+            return <RxDot key={idx} className="text-hcol scale-[1.5]" />
         }
     })
 
@@ -61,11 +60,11 @@ export default function Store(props: Props) {
             setOnMount(false)
             return
         }
+
         const gsapObj =
             fadeFrom === "r"
                 ? {
                       x: 125,
-                      scale: 0.95,
                       opacity: 0,
                       stagger: {
                           grid: [2, 3],
@@ -76,7 +75,6 @@ export default function Store(props: Props) {
                   }
                 : {
                       x: -125,
-                      scale: 0.95,
                       opacity: 0,
                       stagger: {
                           grid: [2, 3],
@@ -123,7 +121,7 @@ export default function Store(props: Props) {
         }
         setPhrase(newPhrase)
     }
-
+    console.log(data)
     return (
         <>
             <div className="flex justify-between h-[100px] items-center pr-28">
@@ -154,7 +152,7 @@ export default function Store(props: Props) {
             </div>
             <div
                 ref={rootEl}
-                className="grid grid-cols-3 auto-rows-[500px] p-5 gap-x-4 gap-y-8"
+                className="grid grid-cols-3 auto-rows-[450px] p-5 gap-x-4 gap-y-8"
             >
                 {itemArr}
             </div>
