@@ -26,7 +26,7 @@ export interface IcartItem {
 }
 
 // a cache for all images in the data array in order to avoid unnecessary GET requests
-function getImages() {
+async function getImages() {
     const imgArr: JSX.Element[] = []
     data.forEach((collection) =>
         collection.forEach((item) => {
@@ -36,7 +36,7 @@ function getImages() {
     return imgArr
 }
 
-const imgCache = getImages()
+const imgCache = await getImages()
 
 export default function App() {
     const [fullPic, setFullPic] = useState(""),
