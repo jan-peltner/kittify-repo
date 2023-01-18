@@ -25,9 +25,13 @@ export interface IcartItem {
     quantity?: number
 }
 
-// a cache for all images in the data array in order to avoid unnecessary GET requests
-async function getImages() {
+//---------------------------------------------------------------------------------------------------------------------------------------
+// a cache for all images in the data array in order to smooth out animations (avoid unncecessary GET requests/validations)
+// for bigger datasets, images would need to be added to the cache dynamically (via the store page/component) to avoid large FCP times
+
+function getImages() {
     const imgArr: JSX.Element[] = []
+    imgArr.push(<img key="bg" src="/bglanding.png"></img>)
     data.forEach((collection) =>
         collection.forEach((item) => {
             imgArr.push(<img key={item.name} src={item.imgUrl}></img>)
@@ -36,7 +40,9 @@ async function getImages() {
     return imgArr
 }
 
-const imgCache = await getImages()
+const imgCache = getImages()
+
+//---------------------------------------------------------------------------------------------------------------------------------------
 
 export default function App() {
     const [fullPic, setFullPic] = useState(""),
