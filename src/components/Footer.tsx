@@ -11,7 +11,7 @@ import { BsFillSuitHeartFill } from "react-icons/bs"
 export default function Footer() {
     return (
         <footer className="relative flex flex-col items-center gap-6 py-10 border-t-[1px] border-btncol w-full mt-auto bg-stroke">
-            <ul className="flex gap-12 text-hcol">
+            <ul className="flex gap-4 lg:gap-12 text-hcol">
                 <li className="hover:text-grayhover transition-all ease-in-out">
                     <Link to="/">Store</Link>
                 </li>
@@ -58,22 +58,22 @@ export default function Footer() {
                     </Tooltip>
                 </li>
             </ul>
-            <p className="inline-flex gap-2 items-center text-hcol text-sm tracking-wide">
+            <p className="flex gap-2 items-center text-hcol text-sm tracking-wide">
                 Made with{" "}
                 <BsFillSuitHeartFill className="fill-btncol scale-x-[1.286] scale-y-[1.5]" />{" "}
                 by Pelly.
             </p>
 
-            <a
+            {/*             <a
                 href="https://github.com/Pellyyy/kittify-repo"
                 target="_blank"
-                className="absolute right-5 bottom-10 w-50 bg-hcol hover:bg-grayhover transition-all ease-in-out text-stroke font-bold rounded-full p-3"
+                className="absolute right-5 bottom-0 lg:bottom-10 w-16 lg:w-50 bg-hcol hover:bg-grayhover transition-all ease-in-out text-stroke font-bold rounded-full p-3"
             >
                 View on GitHub!
                 <span className="pl-[0.33rem] float-right translate-y-1/4">
                     <AiFillGithub className="fill-stroke scale-x-[1.287] scale-y-[1.322]" />
                 </span>
-            </a>
+            </a> */}
         </footer>
     )
 }

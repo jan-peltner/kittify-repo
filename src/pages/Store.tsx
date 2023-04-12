@@ -124,16 +124,16 @@ export default function Store(props: Props) {
 
     return (
         <>
-            <div className="flex justify-between h-[100px] items-center pr-28">
-                <h1 className="text-hcol text-6xl py-5 tracking-widest pl-5">
+            <div className="flex justify-between h-[100px] gap-4 lg:gap-0 items-center pr-6 lg:pr-28">
+                <h1 className="text-hcol sm:text-2xl lg:text-6xl py-5 tracking-widest pl-5">
                     {phrase}
                 </h1>
-                <div className="flex gap-16 h-full items-center relative">
+                <div className="flex gap-6 lg:gap-16 h-full items-center relative">
                     <Tooltip title="Previous Collection" placement="top" arrow>
                         <div>
                             <BsArrowLeft
                                 onClick={() => handleALClick(data)}
-                                className="scale-[3.5]  cursor-pointer fill-hcol transition-all origin-center duration-200 ease-in-out hover:scale-[3.7] hover:brightness-125 active:scale-[3.5] active:brightness-50"
+                                className="scale-[2] hover:scale-[2.5] active:scale-[2.5] lg:scale-[3.5] lg:hover:scale-[3.7] lg:active:scale-[3.7] cursor-pointer fill-hcol transition-all origin-center duration-200 ease-in-out hover:brightness-125 active:brightness-50"
                             />
                         </div>
                     </Tooltip>
@@ -141,7 +141,7 @@ export default function Store(props: Props) {
                         <div>
                             <BsArrowRight
                                 onClick={() => handleARClick(data)}
-                                className="scale-[3.5] cursor-pointer fill-hcol transition-all origin-center duration-200 ease-in-out hover:scale-[3.7] hover:brightness-125 active:scale-[3.5] active:brightness-50"
+                                className="scale-[2] hover:scale-[2.5] active:scale-[2.5] lg:scale-[3.5] lg:hover:scale-[3.7] lg:active:scale-[3.7] cursor-pointer fill-hcol transition-all origin-center duration-200 ease-in-out hover:brightness-125 active:brightness-50"
                             />
                         </div>
                     </Tooltip>
@@ -152,7 +152,7 @@ export default function Store(props: Props) {
             </div>
             <div
                 ref={rootEl}
-                className="grid grid-cols-3 auto-rows-[450px] p-5 gap-x-6 gap-y-8"
+                className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[450px] p-5 gap-x-6 gap-y-8"
             >
                 {itemArr}
             </div>

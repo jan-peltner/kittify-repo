@@ -138,61 +138,51 @@ export default function App() {
         <>
             {/* img cache */}
             <div className="hidden">{imgCache}</div>
+            <div className="flex flex-col bg-bgcol h-screen font-serif overflow-x-hidden scrollbar-thin scrollbar-thumb-btncol scrollbar-thumb-rounded-full">
+                {fullPic && (
+                    <FullscreenPic imgUrl={fullPic} setFullPic={setFullPic} />
+                )}
 
-            {access ? (
-                <div className="flex flex-col bg-bgcol h-screen font-serif overflow-x-hidden scrollbar-thin scrollbar-thumb-btncol scrollbar-thumb-rounded-full">
-                    {fullPic && (
-                        <div>
-                            <FullscreenPic
-                                imgUrl={fullPic}
-                                setFullPic={setFullPic}
-                            />
-                        </div>
-                    )}
-
-                    <Nav
-                        displayCart={displayCart}
+                <Nav
+                    displayCart={displayCart}
+                    setDisplayCart={setDisplayCart}
+                    triggerCartAnimation={triggerCartAnimation}
+                    cartItems={cartItems}
+                />
+                {displayCart && (
+                    <Cart
                         setDisplayCart={setDisplayCart}
-                        triggerCartAnimation={triggerCartAnimation}
+                        animationTrig={animationTrig}
+                        setAnimationTrig={setAnimationTrig}
                         cartItems={cartItems}
+                        setCartItems={setCartItems}
+                        getItem={getItem}
+                        getQnt={getQnt}
+                        incQnt={incQnt}
+                        decQnt={decQnt}
                     />
-                    {displayCart && (
-                        <Cart
-                            setDisplayCart={setDisplayCart}
-                            animationTrig={animationTrig}
-                            setAnimationTrig={setAnimationTrig}
-                            cartItems={cartItems}
-                            setCartItems={setCartItems}
-                            getItem={getItem}
-                            getQnt={getQnt}
-                            incQnt={incQnt}
-                            decQnt={decQnt}
-                        />
-                    )}
-                    <div className="w-full h-full">
-                        <Routes>
-                            <Route
-                                path="/"
-                                element={
-                                    <Store
-                                        getItem={getItem}
-                                        addItem={addItem}
-                                        cartItems={cartItems}
-                                        getQnt={getQnt}
-                                        incQnt={incQnt}
-                                        decQnt={decQnt}
-                                    />
-                                }
-                            ></Route>
+                )}
+                <div className="w-full h-auto">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <Store
+                                    getItem={getItem}
+                                    addItem={addItem}
+                                    cartItems={cartItems}
+                                    getQnt={getQnt}
+                                    incQnt={incQnt}
+                                    decQnt={decQnt}
+                                />
+                            }
+                        ></Route>
 
-                            <Route path="/about" element={<About />}></Route>
-                        </Routes>
-                    </div>
-                    <Footer />
+                        <Route path="/about" element={<About />}></Route>
+                    </Routes>
                 </div>
-            ) : (
-                <LandingPage setAccess={setAccess} />
-            )}
+                <Footer />
+            </div>
         </>
     )
 }

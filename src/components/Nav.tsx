@@ -33,7 +33,7 @@ export default function Nav(props: Props) {
                 <NavLink to="/">
                     <div
                         id="logo-container"
-                        className="flex w-52 items-center gap-2"
+                        className="flex w-36 lg:w-52 items-center gap-2"
                     >
                         <img
                             className="w-12 h-auto"

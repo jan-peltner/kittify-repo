@@ -108,12 +108,12 @@ export default function Cart(props: Props) {
             ref={overlayRef}
         >
             <div
-                className="flex flex-col justify-center items-center bg-bgcol w-1/3 rounded-l-md  absolute right-0 z-20"
+                className="flex flex-col justify-center items-center bg-bgcol w-full lg:w-1/3 rounded-l-md  absolute right-0 z-20"
                 ref={cartRef}
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="w-full flex justify-center mb-3">
-                    <h2 className="bg-gradient-to-b from-stroke to-bgcol w-full text-center px-5 pt-5 pb-1 font-cursive font-bold text-hcol text-3xl ">
+                    <h2 className="bg-gradient-to-b from-stroke to-bgcol w-full text-center px-5 pt-5 pb-1 font-bold text-hcol text-3xl ">
                         Checkout.
                     </h2>
                 </div>
