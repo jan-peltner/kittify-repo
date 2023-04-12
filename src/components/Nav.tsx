@@ -57,18 +57,6 @@ export default function Nav(props: Props) {
                                 : undefined
                         }
                     >
-                        Home
-                    </NavLink>
-                </li>
-                <li className="hover:text-grayhover transition-all ease-in-out">
-                    <NavLink
-                        to="/store"
-                        className={({ isActive }) =>
-                            isActive
-                                ? "text-btncol hover:text-pinkhover"
-                                : undefined
-                        }
-                    >
                         Store
                     </NavLink>
                 </li>

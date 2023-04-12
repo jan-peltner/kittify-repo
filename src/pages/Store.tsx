@@ -121,7 +121,7 @@ export default function Store(props: Props) {
         }
         setPhrase(newPhrase)
     }
-    console.log(data)
+
     return (
         <>
             <div className="flex justify-between h-[100px] items-center pr-28">
@@ -152,7 +152,7 @@ export default function Store(props: Props) {
             </div>
             <div
                 ref={rootEl}
-                className="grid grid-cols-3 auto-rows-[450px] p-5 gap-x-4 gap-y-8"
+                className="grid grid-cols-3 auto-rows-[450px] p-5 gap-x-6 gap-y-8"
             >
                 {itemArr}
             </div>

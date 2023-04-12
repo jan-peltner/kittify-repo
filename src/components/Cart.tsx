@@ -228,7 +228,7 @@ export default function Cart(props: Props) {
                             onClick={handleClose}
                             className="bg-btncol w-1/2 hover:bg-pinkhover text-stroke rounded-lg my-3 p-3 font-bold transition-colors duration-200 ease-in-out"
                         >
-                            <NavLink to="/store">Go to Store</NavLink>
+                            <NavLink to="/">Go to Store</NavLink>
                         </button>
                     </div>
                 )}

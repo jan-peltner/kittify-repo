@@ -44,7 +44,7 @@ export default function FullscreenPic(props: Props) {
 
     return (
         <div
-            className="overlay absolute w-screen h-screen bg-[#000000]/70 z-30"
+            className="overlay absolute w-screen h-screen bg-[#000000]/70 z-30 backdrop-blur-md"
             onClick={handleClose}
             ref={overlayRef}
         >

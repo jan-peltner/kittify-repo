@@ -13,11 +13,7 @@ export default function Footer() {
         <footer className="relative flex flex-col items-center gap-6 py-10 border-t-[1px] border-btncol w-full mt-auto bg-stroke">
             <ul className="flex gap-12 text-hcol">
                 <li className="hover:text-grayhover transition-all ease-in-out">
-                    <Link to="/">Home</Link>
-                </li>
-
-                <li className="hover:text-grayhover transition-all ease-in-out">
-                    <Link to="/store">Store</Link>
+                    <Link to="/">Store</Link>
                 </li>
                 <li className="hover:text-grayhover transition-all ease-in-out">
                     <Link to="/about">About</Link>

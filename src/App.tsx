@@ -28,6 +28,7 @@ export interface IcartItem {
 //---------------------------------------------------------------------------------------------------------------------------------------
 // a cache for all images in the data array in order to smooth out animations (avoid unncecessary GET requests/validations)
 // for bigger datasets, images would need to be added to the cache dynamically (via the store page/component) to avoid large FCP times
+// O(n) time complexity; n = number of overall items in dataset
 
 function getImages() {
     const imgArr: JSX.Element[] = []
@@ -170,9 +171,8 @@ export default function App() {
                     )}
                     <div className="w-full h-full">
                         <Routes>
-                            <Route path="/" element={<Home />}></Route>
                             <Route
-                                path="/store"
+                                path="/"
                                 element={
                                     <Store
                                         getItem={getItem}
@@ -184,6 +184,7 @@ export default function App() {
                                     />
                                 }
                             ></Route>
+
                             <Route path="/about" element={<About />}></Route>
                         </Routes>
                     </div>

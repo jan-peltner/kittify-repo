@@ -66,7 +66,7 @@ export default function ItemCard(props: Props) {
                                 placement="bottom"
                                 arrow
                             >
-                                <div className="hover:scale-125 transition-transform duration-200 ease-out">
+                                <div className="hover:scale-125 transition-transform duration-200 ease-out text-hcol">
                                     <MdFullscreen />
                                 </div>
                             </Tooltip>
