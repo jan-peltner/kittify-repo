@@ -108,7 +108,7 @@ export default function Cart(props: Props) {
             ref={overlayRef}
         >
             <div
-                className="flex flex-col justify-center items-center bg-bgcol w-full lg:w-1/3 rounded-l-md  absolute right-0 z-20"
+                className="flex flex-col  justify-center items-center bg-bgcol w-full lg:w-1/3 rounded-l-md  absolute right-0 z-20"
                 ref={cartRef}
                 onClick={(e) => e.stopPropagation()}
             >
@@ -119,7 +119,7 @@ export default function Cart(props: Props) {
                 </div>
                 {cartItems[0] ? (
                     <div className="w-full flex flex-col items-center">
-                        <div className="flex flex-col items-center gap-6">
+                        <div className="flex flex-col items-center gap-6 ">
                             {cartItemArr}
                         </div>
                         <div className="w-full bg-gradient-to-b from-bgcol to-stroke">
