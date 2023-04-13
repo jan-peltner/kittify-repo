@@ -61,7 +61,7 @@ export default function Footer() {
             <p className="flex gap-2 items-center text-hcol text-sm tracking-wide">
                 Made with{" "}
                 <BsFillSuitHeartFill className="fill-btncol scale-x-[1.286] scale-y-[1.5]" />{" "}
-                by Pelly.
+                by JanDev.
             </p>
 
             {/*             <a
